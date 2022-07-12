@@ -1,14 +1,14 @@
 {
-    "plugins": [
-      [
-        "module-resolver",
-        {
-          "alias": {
-            "~": "./src",
-            "cpm": "./src/components",
-            "img": "./src/images"
-          }
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "~": "./src",
+          "cpm": "./src/components",
+          "img": "./src/img"
         }
-      ]
+      }
     ]
-  }
+  ]
+}
