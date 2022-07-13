@@ -1,0 +1,68 @@
+.wrapper {
+  height: 300px;
+  width: 100%;
+  position: relative;
+  background-color: var(--primary-light);
+  margin-top: 20px;
+}
+.img-left {
+  height: 100%;
+}
+.img-center {
+  height: 160px;
+  background: var(--white);
+}
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: aquamarine;
+  min-width: 300px;
+  height: 100%;
+}
+.contact {
+  display: flex;
+  &-item {
+    font-size: 4rem;
+    background-color: aliceblue;
+    // height: 100px;
+    // width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+  }
+  .facebook {
+    a {
+      color: #385490;
+    }
+  }
+  .youtube {
+    a {
+      color: #cf2423;
+    }
+  }
+  .tiktok {
+    a {
+      height: 36px;
+      width: 36px;
+      border-radius: 4px;
+      color: var(--white);
+      font-size: 2rem;
+      background-color: black;
+    }
+  }
+  .instagram {
+    a {
+      color: #ad3696;
+    }
+  }
+}
