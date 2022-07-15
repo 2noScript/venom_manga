@@ -8,6 +8,7 @@ import { Fragment } from "react";
 
 const publicRoutes = [
   { path: routesConfig.home, component: Home, layout: HomeLayout },
+  { path: "/test", component: Fragment, layout: HomeLayout },
   // other
   //
 ];
