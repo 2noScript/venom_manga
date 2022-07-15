@@ -1,23 +1,25 @@
-import { useFetch } from "~/hooks";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import BannerSlide from "./components/BannerSilde";
-import Loading from "./components/Loading";
-import Tippy from "@tippyjs/react/headless";
+import { Routes, Route } from "react-router-dom";
+import { publicRoutes } from "~/Routes";
 function App() {
-  const [data] = useFetch("get", "new-update");
-  console.log(data);
   return (
     <div className="app">
-      {data ? (
-        <>
-          <Header />
-          {data && <BannerSlide data={data.jsonData} />}
-          <Footer />
-        </>
-      ) : (
-        <Loading />
-      )}
+      <Routes>
+        {publicRoutes.map((route, index) => {
+          const Page = route.component;
+          const Layout = route.layout;
+          return (
+            <Route
+              key={index}
+              path={route.path}
+              element={
+                <Layout>
+                  <Page />
+                </Layout>
+              }
+            />
+          );
+        })}
+      </Routes>
     </div>
   );
 }

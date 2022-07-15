@@ -1,5 +1,6 @@
 import classNames from "classnames/bind";
 import styles from "./Result.module.scss";
+import { memo } from "react";
 const cx = classNames.bind(styles);
 function Result({ data }) {
   return (
@@ -14,4 +15,4 @@ function Result({ data }) {
   );
 }
 
-export default Result;
+export default memo(Result);

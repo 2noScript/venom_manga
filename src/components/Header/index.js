@@ -2,6 +2,7 @@ import Search from "./Search";
 import classNames from "classnames/bind";
 import styles from "./Header.module.scss";
 import venom from "img/logo/xvenom.png";
+import { memo } from "react";
 const cx = classNames.bind(styles);
 function Header() {
   return (
@@ -17,4 +18,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default memo(Header);

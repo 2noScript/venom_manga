@@ -1,4 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
+import { memo } from "react";
 
 import classNames from "classnames/bind";
 import styles from "./BannerSlide.module.scss";
@@ -69,4 +70,4 @@ function BannerSlide({ data }) {
   );
 }
 
-export default BannerSlide;
+export default memo(BannerSlide);

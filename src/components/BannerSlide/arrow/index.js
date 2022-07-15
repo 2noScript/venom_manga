@@ -24,4 +24,5 @@ function SlidePrevtButton(props) {
     </button>
   );
 }
+
 export { SlideNextButton, SlidePrevtButton };
