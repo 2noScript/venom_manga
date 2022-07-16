@@ -1,0 +1,18 @@
+.wrapper {
+  height: 80px;
+  width: 100%;
+  border-radius: 6px;
+  //   background-color: aquamarine;
+  background-color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  .ico {
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 4px;
+  }
+}

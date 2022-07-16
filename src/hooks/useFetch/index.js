@@ -1,17 +1,13 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
-const instance = axios.create({
-  baseURL: process.env.REACT_APP_API,
-  // baseURL: process.env.REACT_APP_LOCAL_API,
-});
 
+import fetchApi from "~/Fetch";
 const useFetch = (method, url, option) => {
   const [data, setData] = useState();
   useEffect(() => {
     const request = async (method, url, option) => {
       try {
         if (method === "get") {
-          const res = await instance.get(url, option);
+          const res = await fetchApi.get(url, option);
           setData(res.data);
         } else if (method === "post") {
           //

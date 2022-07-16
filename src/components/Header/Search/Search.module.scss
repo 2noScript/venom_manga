@@ -46,6 +46,8 @@ $search-w: 380px; //default
     cursor: pointer;
     border-radius: 50%;
   }
+  .clean {
+  }
   .loading {
     animation: rotate 1s linear infinite;
   }
@@ -57,8 +59,6 @@ $search-w: 380px; //default
   max-height: 400px;
   overflow: overlay;
   overflow-y: scroll;
-  //   background-color: blueviolet;
-  //   opacity: 0.5;
 
   padding: 8px 4px;
 }
