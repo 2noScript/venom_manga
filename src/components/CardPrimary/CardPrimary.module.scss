@@ -1,0 +1,107 @@
+@mixin bg-bd {
+  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+.wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 150%;
+  border-radius: 6px;
+  overflow: hidden;
+  &:hover {
+    .bg {
+      filter: blur(8px);
+      transform: scale(1.1);
+    }
+    .info {
+      visibility: hidden;
+    }
+    .select {
+      visibility: visible;
+    }
+  }
+}
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  .bg {
+    width: 100%;
+    height: calc(100% - 32px);
+    transition: all 0.4s linear 0s;
+  }
+  .name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: var(--primary-dark);
+    height: 32px;
+    color: var(--white);
+    padding: 0 8px;
+    line-height: 3rem;
+    font-size: 1.4rem;
+  }
+  .info {
+    position: absolute;
+    right: 8px;
+    top: 12px;
+    border-radius: 4px;
+    z-index: var(--z-low);
+    text-transform: capitalize;
+    transition: all 0.2s linear 0s;
+    padding: 4px 8px;
+    @include bg-bd;
+  }
+  .update,
+  .chapter {
+    display: flex;
+    align-items: center;
+    span {
+      font-size: 1.4rem;
+      padding-left: 4px;
+      font-weight: 700;
+    }
+  }
+}
+.select {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-low);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+
+  .read,
+  .more {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.8rem;
+    padding: 8px 12px;
+    border-radius: 4px;
+    @include bg-bd;
+    span {
+      padding-left: 4px;
+      text-transform: capitalize;
+      font-weight: 600;
+      font-size: 1.4rem;
+    }
+  }
+  .read {
+    background-color: rgba(207, 39, 199, 0.4);
+
+    &:hover {
+      background-color: rgba(207, 39, 199, 0.4);
+    }
+  }
+  .more {
+    margin-top: 12px;
+  }
+}

@@ -14,13 +14,14 @@
   --primary-light: #f4f4f8;
   --primary-dark: #292929;
   //layout
-  --app-padding-l-r: 32px;
+  --app-padding-l-r: 36px;
 
   //components
   --app-header-h: 60px;
 }
 .app {
-  // padding: 0px 20px;
+  // filter: blur(4px);
+  // background-color: var(--primary-light);
 }
 * {
   box-sizing: border-box;

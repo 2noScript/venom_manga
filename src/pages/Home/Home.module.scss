@@ -1,2 +1,18 @@
 .wrapper {
+  padding-top: 16px;
+}
+
+.content {
+  padding: 20px var(--app-padding-l-r);
+  .title {
+    display: inline-flex;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 8px 2px;
+    &-ico {
+      font-size: 2.2rem;
+      margin-left: -4px;
+    }
+  }
 }

@@ -1,0 +1,26 @@
+.swiper-btn {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #e8ebed;
+  }
+
+  &-next {
+    right: 4px;
+  }
+
+  &-prev {
+    left: 4px;
+  }
+}

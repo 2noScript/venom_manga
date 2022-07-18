@@ -1,18 +1,17 @@
-import classNames from "classnames/bind";
+import classNameNames from "classnames/bind";
 import styles from "./Loading.module.scss";
-import loading from "./loading.gif";
-const cx = classNames.bind(styles);
-
+const cx = classNameNames.bind(styles);
+const igName = "2noScript";
 function Loading() {
   return (
     <div className={cx("wrapper")}>
-      <div className={cx("cube")}>
-        <div className={cx("c-1")}></div>
-        <div className={cx("c-2")}></div>
-        <div className={cx("c-3")}></div>
-        <div className={cx("c-4")}></div>
-        <div className={cx("c-5")}></div>
-        <div className={cx("c-6")}></div>
+      <div className={cx("circ")}>
+        <div className={cx("load")}>{igName} . . . . </div>
+        <div className={cx("hands")}></div>
+        <div className={cx("body")}></div>
+        <div className={cx("head")}>
+          <div className={cx("eye")}></div>
+        </div>
       </div>
     </div>
   );

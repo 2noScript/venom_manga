@@ -1,5 +1,11 @@
 .wrapper {
   cursor: pointer;
+  border-radius: 4px;
+  &:hover {
+    .slide-btn {
+      visibility: visible;
+    }
+  }
 }
 .slide {
   padding-top: 28.57%;
@@ -97,4 +103,15 @@
       }
     }
   }
+}
+
+.slide-btn {
+  visibility: hidden;
+  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  height: 32px;
+  width: 32px;
+  font-size: 2rem;
+  border: none;
 }

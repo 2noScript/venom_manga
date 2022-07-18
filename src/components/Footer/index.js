@@ -1,6 +1,7 @@
 import classNames from "classnames/bind";
 import styles from "./Footer.module.scss";
 import { memo } from "react";
+import Image from "cpm/Image";
 import {
   FaFacebookSquare,
   FaTiktok,
@@ -12,6 +13,7 @@ import { ImNeutral } from "react-icons/im";
 import venomLeft from "img/footer/venom-left.png";
 import venomCenter from "img/footer/venom-center.png";
 import venomRight from "img/footer/venom-preview.png";
+
 const cx = classNames.bind(styles);
 
 const contact = [
@@ -46,9 +48,9 @@ const important =
 function Footer() {
   return (
     <div className={cx("wrapper")}>
-      <img src={venomLeft} alt={"left"} className={cx("img-left")} />
+      <Image src={venomLeft} className={cx("img-left")} />
       <div className={cx("content")}>
-        <img src={venomCenter} alt="" className={cx("img-center")} />
+        <Image src={venomCenter} alt="" className={cx("img-center")} />
         <div className={cx("copyright")}>
           <span>copyright</span>
           <span>{copyright.ico}</span>
@@ -69,7 +71,7 @@ function Footer() {
           })}
         </div>
       </div>
-      <img src={venomRight} alt="xx" className={cx("img-right")} />
+      <Image src={venomRight} className={cx("img-right")} />
     </div>
   );
 }

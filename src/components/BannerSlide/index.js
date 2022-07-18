@@ -3,14 +3,13 @@ import { memo } from "react";
 
 import classNames from "classnames/bind";
 import styles from "./BannerSlide.module.scss";
-import { EffectFade, Navigation, Pagination } from "swiper";
+import { EffectFade, Navigation } from "swiper";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
-import { SlideNextButton, SlidePrevtButton } from "./arrow";
+import { SlideNextButton, SlidePrevtButton } from "cpm/ArrowSlide";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/navigation";
-import "swiper/css/pagination";
 const cx = classNames.bind(styles);
 function BannerSlide({ data }) {
   return (
@@ -62,8 +61,14 @@ function BannerSlide({ data }) {
               </SwiperSlide>
             );
           })}
-          <SlideNextButton icon={<IoIosArrowForward />} />
-          <SlidePrevtButton icon={<IoIosArrowBack />} />
+          <SlideNextButton
+            icon={<IoIosArrowForward />}
+            className={cx("slide-btn")}
+          />
+          <SlidePrevtButton
+            icon={<IoIosArrowBack />}
+            className={cx("slide-btn")}
+          />
         </Swiper>
       )}
     </>

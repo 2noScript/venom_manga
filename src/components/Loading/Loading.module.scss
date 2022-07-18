@@ -5,109 +5,157 @@
   bottom: 0;
   top: 0;
   z-index: var(--z-hight);
-  background-color: rgba(255, 255, 255, 0.8);
+  // background-color: rgba(255, 255, 255, 1);
+  background-color: #111;
+
+  // -webkit-backdrop-filter: blur(4px);
+  // backdrop-filter: blur(4px);
   display: flex;
   justify-content: center;
   align-items: center;
+  .cube {
+    &.cube {
+      margin-left: 20px;
+    }
+  }
   img {
     width: 100vw;
     height: 100vh;
   }
 }
-.c {
-  &-1 {
-    background-color: #246fb1 !important;
-  }
-  &-2 {
-    background-color: rebeccapurple !important;
-  }
-  &-3 {
-    background-color: rebeccapurple !important;
-  }
-  &-4 {
-    background-color: rebeccapurple !important;
-  }
-  &-5 {
-    background-color: rebeccapurple !important;
-  }
-  &-6 {
-    background-color: rebeccapurple !important;
-  }
+
+.eye {
+  width: 20px;
+  height: 8px;
+  background-color: rgba(240, 220, 220, 1);
+  border-radius: 0px 0px 20px 20px;
+  position: relative;
+  left: 10px;
+  top: 40px;
+  box-shadow: 40px 0px 0px 0px rgba(240, 220, 220, 1);
 }
-//cube
-@-webkit-keyframes cube {
+
+.head {
+  backface-visibility: hidden;
+  position: relative;
+  margin: -250px auto;
+  width: 80px;
+  height: 80px;
+  background-color: #111;
+  border-radius: 50px;
+  box-shadow: inset -4px 2px 0px 0px rgba(240, 220, 220, 1);
+  animation: headAnim 1.5s infinite alternate;
+  animation-timing-function: ease-out;
+}
+
+.body {
+  position: relative;
+  margin: 90px auto;
+  width: 140px;
+  height: 120px;
+  background-color: #111;
+  border-radius: 50px/25px;
+  box-shadow: inset -5px 2px 0px 0px rgba(240, 220, 220, 1);
+  animation: bodyAnim 1.5s infinite alternate;
+  animation-timing-function: ease-out;
+}
+
+@keyframes headAnim {
   0% {
-    -webkit-transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
-    transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
+    top: 0px;
   }
   50% {
-    -webkit-transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);
-    transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);
+    top: 10px;
   }
   100% {
-    -webkit-transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);
-    transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);
-  }
-}
-@keyframes cube {
-  0% {
-    -webkit-transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
-    transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
-  }
-  50% {
-    -webkit-transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);
-    transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);
-  }
-  100% {
-    -webkit-transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);
-    transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);
+    top: 0px;
   }
 }
 
-.cube {
-  -webkit-animation: cube 2s infinite ease;
-  animation: cube 2s infinite ease;
-  height: 40px;
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  width: 40px;
+@keyframes bodyAnim {
+  0% {
+    top: -5px;
+  }
+  50% {
+    top: 10px;
+  }
+  100% {
+    top: -5px;
+  }
 }
-.cube div {
-  background-color: rgba(255, 255, 255, 0.25);
-  height: 100%;
+
+.circ {
+  backface-visibility: hidden;
+  margin: 60px auto;
+  width: 180px;
+  height: 180px;
+
+  background-color: #111;
+  position: relative;
+  z-index: -1;
+  left: 0%;
+  top: 0%;
+  overflow: hidden;
+}
+
+.hands {
+  backface-visibility: hidden;
+  margin-top: 140px;
+  width: 120px;
+  height: 120px;
   position: absolute;
-  width: 100%;
-  border: 2px solid white;
+  background-color: #111;
+  border-radius: 20px;
+  box-shadow: -1px -4px 0px 0px rgba(240, 220, 220, 1);
+  transform: rotate(45deg);
+  top: 75%;
+  left: 16%;
+  z-index: 1;
+  animation: bodyAnim 1.5s infinite alternate;
+  animation-timing-function: ease-out;
 }
-.cube div:nth-of-type(1) {
-  -webkit-transform: translateZ(-20px) rotateY(180deg);
-  transform: translateZ(-20px) rotateY(180deg);
+
+.load {
+  position: absolute;
+  width: 7ch;
+  height: 32px;
+  text-align: left;
+  line-height: 32px;
+  margin: -10px auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Julius Sans One", sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: rgba(240, 220, 220, 1);
+  left: 2%;
+  top: 5%;
+  animation: fontAnim 3.75s infinite;
+  animation-timing-function: ease-out;
+  word-wrap: break-word;
+  display: block;
+  overflow: hidden;
 }
-.cube div:nth-of-type(2) {
-  -webkit-transform: rotateY(-270deg) translateX(50%);
-  transform: rotateY(-270deg) translateX(50%);
-  -webkit-transform-origin: top right;
-  transform-origin: top right;
-}
-.cube div:nth-of-type(3) {
-  -webkit-transform: rotateY(270deg) translateX(-50%);
-  transform: rotateY(270deg) translateX(-50%);
-  -webkit-transform-origin: center left;
-  transform-origin: center left;
-}
-.cube div:nth-of-type(4) {
-  -webkit-transform: rotateX(90deg) translateY(-50%);
-  transform: rotateX(90deg) translateY(-50%);
-  -webkit-transform-origin: top center;
-  transform-origin: top center;
-}
-.cube div:nth-of-type(5) {
-  -webkit-transform: rotateX(-90deg) translateY(50%);
-  transform: rotateX(-90deg) translateY(50%);
-  -webkit-transform-origin: bottom center;
-  transform-origin: bottom center;
-}
-.cube div:nth-of-type(6) {
-  -webkit-transform: translateZ(20px);
-  transform: translateZ(20px);
+
+@keyframes fontAnim {
+  0% {
+    width: 7ch;
+  }
+  16% {
+    width: 8ch;
+  }
+  32% {
+    width: 9ch;
+  }
+  48% {
+    width: 10ch;
+  }
+  64% {
+    width: 11ch;
+  }
+  80% {
+    width: 12ch;
+  }
+  100% {
+    width: 13ch;
+  }
 }
