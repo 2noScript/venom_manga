@@ -20,6 +20,28 @@ const TITLE = [
     link: "",
   },
 ];
+const TOP_MANGA = [
+  {
+    title: "top one",
+
+    more: "",
+  },
+  {
+    title: "top tháng",
+
+    more: "",
+  },
+  {
+    title: "top tuần",
+
+    more: "",
+  },
+  {
+    title: "top ngày",
+
+    more: "",
+  },
+];
 function Home() {
   document.title = "VENOM";
   const [data] = useFetch("get", "hot");
@@ -36,8 +58,10 @@ function Home() {
     <>
       {loading ? (
         <div className={cx("wrapper")}>
+          {/* slideshow top */}
           <BannerSlide data={data.jsonData} />
           <div className={cx("content")}>
+            {/*manga update */}
             <div className={cx("new-update")}>
               <Link to={TITLE[0].link}>
                 <div className={cx("title")}>
@@ -47,7 +71,19 @@ function Home() {
               </Link>
               <MangaSlide data={data.jsonData} />
             </div>
+            {/* top  */}
+            <div className={cx("topManga-list")}>
+              {TOP_MANGA.map((item, index) => {
+                return (
+                  <div className={cx("topManga-item")} key={index}>
+                    <div className={cx("topManga-title")}></div>
 
+                    <div className={cx("topManga-moreBtn")}></div>
+                  </div>
+                );
+              })}
+            </div>
+            {/* new manga */}
             <div className={cx("new-manga")}>
               <Link to={TITLE[1].link}>
                 <div className={cx("title")}>

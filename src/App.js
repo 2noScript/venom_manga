@@ -3,8 +3,9 @@ import { publicRoutes } from "~/Routes";
 import useScrollPosition from "@react-hook/window-scroll";
 import OnTop from "./components/OnTop";
 import { useState, useEffect } from "react";
+const SCROLL_FPS = 250;
 function App() {
-  const scrollY = useScrollPosition(60 /*fps*/);
+  const scrollY = useScrollPosition(SCROLL_FPS);
 
   return (
     <div className="app">

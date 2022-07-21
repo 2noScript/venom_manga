@@ -11,7 +11,7 @@
   overflow: hidden;
   &:hover {
     .bg {
-      filter: blur(8px);
+      filter: blur(4px);
       transform: scale(1.1);
     }
     .info {
@@ -31,7 +31,7 @@
   .bg {
     width: 100%;
     height: calc(100% - 32px);
-    transition: all 0.4s linear 0s;
+    transition: transform 0.4s ease-in-out 0s;
   }
   .name {
     overflow: hidden;
@@ -51,7 +51,7 @@
     border-radius: 4px;
     z-index: var(--z-low);
     text-transform: capitalize;
-    transition: all 0.2s linear 0s;
+    transition: all 0.2s ease-in-out 0s;
     padding: 4px 8px;
     @include bg-bd;
   }
@@ -77,6 +77,7 @@
   justify-content: center;
   align-items: center;
   visibility: hidden;
+  transition: all 0.2s ease-in-out 0s;
 
   .read,
   .more {

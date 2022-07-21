@@ -18,7 +18,8 @@ function MangaSlide({ data }) {
         spaceBetween={8}
         slidesPerGroup={3}
         loop={true}
-        loopFillGroupWithBlank={true}
+        //err
+        // loopFillGroupWithBlank={true}
         className={cx("wrapper")}
         navigation={false}
         modules={[Navigation]}

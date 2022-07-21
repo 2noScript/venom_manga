@@ -1,0 +1,53 @@
+$card-border-radius: 4px;
+@mixin textWrap {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+.wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 41.67%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: $card-border-radius;
+}
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: antiquewhite;
+  padding: 4px;
+  display: flex;
+}
+.avatar {
+  height: 100%;
+  width: 25%;
+  border-radius: $card-border-radius;
+}
+.info {
+  height: 100%;
+  flex: 1;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.name {
+  margin-top: 8px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+
+  @include textWrap;
+  -webkit-line-clamp: 1;
+}
+.description {
+  font-size: 1.4rem;
+  font-weight: 450;
+  @include textWrap;
+  -webkit-line-clamp: 2;
+}
