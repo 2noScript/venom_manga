@@ -2,7 +2,7 @@ $w-item: auto;
 
 .wrapper {
   display: grid;
-  grid-template-columns: $w-item $w-item $w-item;
+  grid-template-columns: $w-item $w-item $w-item $w-item;
   gap: 8px;
   // grid-row-gap: 16px;
 }

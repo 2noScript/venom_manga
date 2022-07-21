@@ -1,3 +1,4 @@
+$w-item: auto;
 .wrapper {
   padding-top: 16px;
 }
@@ -15,4 +16,30 @@
       margin-left: -4px;
     }
   }
+}
+
+.new-update,
+.topManga-list,
+.new-manga {
+  margin-top: 36px;
+}
+
+.topManga-list {
+  padding: 0 4px;
+  display: grid;
+  grid-template-columns: $w-item $w-item $w-item $w-item;
+  gap: 12px;
+}
+.topManga-item {
+  min-height: 400px;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+.topManga-title {
+  text-transform: capitalize;
+  padding: 4px 0;
+  display: flex;
+  font-weight: 700;
+  justify-content: center;
+  align-items: center;
 }

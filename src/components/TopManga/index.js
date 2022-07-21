@@ -1,9 +1,10 @@
 import classNames from "classnames/bind";
-import styles from "./MangaGrid.module.scss";
-import MangaCard from "./MangaCard";
+import styles from "./TopManga.module.scss";
+import TopCard from "./TopCard";
 import { memo, useState, useEffect } from "react";
 const cx = classNames.bind(styles);
-function MangaGrid({ data, limit }) {
+
+function TopManga({ data, limit }) {
   const [oriData, setOriData] = useState();
   useEffect(() => {
     limit ? setOriData(data.slice(0, limit)) : setOriData(data);
@@ -11,10 +12,10 @@ function MangaGrid({ data, limit }) {
   return (
     <div className={cx("wrapper")}>
       {oriData?.map((item, index) => {
-        return <MangaCard key={index} data={item} />;
+        return <TopCard data={item} key={index} number={index + 1} />;
       })}
     </div>
   );
 }
 
-export default memo(MangaGrid);
+export default memo(TopManga);

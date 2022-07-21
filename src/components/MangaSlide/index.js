@@ -8,13 +8,17 @@ import { Navigation } from "swiper";
 import { SlideNextButton, SlidePrevtButton } from "cpm/ArrowSlide";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import CardPrimary from "cpm/CardPrimary";
-import { memo } from "react";
+import { memo, useState, useEffect } from "react";
 const cx = classNames.bind(styles);
-function MangaSlide({ data }) {
+function MangaSlide({ data, limit }) {
+  const [oriData, setOriData] = useState();
+  useEffect(() => {
+    limit ? setOriData(data.slice(0, limit)) : setOriData(data);
+  }, [limit, data]);
   return (
     <div>
       <Swiper
-        slidesPerView={7}
+        slidesPerView={8}
         spaceBetween={8}
         slidesPerGroup={3}
         loop={true}
@@ -24,7 +28,7 @@ function MangaSlide({ data }) {
         navigation={false}
         modules={[Navigation]}
       >
-        {data.map((item, index) => {
+        {oriData?.map((item, index) => {
           return (
             <SwiperSlide key={index}>
               <CardPrimary data={item} />
