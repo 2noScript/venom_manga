@@ -3,12 +3,23 @@ import classNames from "classnames/bind";
 import styles from "./Header.module.scss";
 import venom from "img/logo/xvenom.png";
 import { routesConfig } from "~/configs";
-import { memo } from "react";
+import { memo, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import useScrollPosition from "@react-hook/window-scroll";
+const SCROLL_FPS = 250;
+
 const cx = classNames.bind(styles);
 function Header() {
+  const scrollY = useScrollPosition(SCROLL_FPS);
+  const [currentY, setcurrentY] = useState(window.pageYOffset);
+  const [show, setShow] = useState(true);
+  useEffect(() => {
+    setShow(currentY > scrollY);
+    setcurrentY(scrollY);
+  }, [scrollY]);
+  const cls = show ? "visible" : "hidden";
   return (
-    <div className={cx("wrapper")}>
+    <div className={cx("wrapper", cls)}>
       <Link to={routesConfig.home}>
         <div
           className={cx("logo")}

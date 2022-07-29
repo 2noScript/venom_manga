@@ -1,6 +1,7 @@
 import classNames from "classnames/bind";
 import styles from "./OnTop.module.scss";
-import {memo} from 'react'
+import { memo } from "react";
+import { ImArrowUp } from "react-icons/im";
 const cx = classNames.bind(styles);
 function OnTop({ right, top }) {
   return (
@@ -14,7 +15,7 @@ function OnTop({ right, top }) {
         top: top,
       }}
     >
-      ontop
+      <ImArrowUp />
     </div>
   );
 }

@@ -23,6 +23,9 @@
   // filter: blur(4px);
   // background-color: var(--primary-light);
 }
+title {
+  text-transform: uppercase !important;
+}
 * {
   box-sizing: border-box;
   padding: 0;

@@ -20,3 +20,15 @@
   background-size: 100% 100%;
   border-radius: 12px;
 }
+
+.visible {
+  /* display: flex; */
+  top: 0;
+  transition: top 0.4s ease-out 0.4s;
+}
+
+.hidden {
+  /* display: none; */
+  top: -80px;
+  transition: top 0.4s ease-out 0.4s;
+}

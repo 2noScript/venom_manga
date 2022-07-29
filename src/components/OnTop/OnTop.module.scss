@@ -1,7 +1,13 @@
 .wrapper {
   position: fixed;
   z-index: var(--z-medium);
-  width: 200px;
-  height: 100px;
-  background-color: black;
+  min-width: 60px;
+  min-height: 60px;
+  color: var(--red);
+  font-size: 3.6rem;
+  // background-color: antiquewhite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
