@@ -18,7 +18,7 @@ function Home() {
   const homeData = useSelector((state) => state.homeData);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchHomeData());
+    dispatch(fetchHomeData("hello"));
     dispatch(title("venom"));
   }, []);
   return (

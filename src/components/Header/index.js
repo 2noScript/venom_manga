@@ -11,13 +11,15 @@ const SCROLL_FPS = 250;
 const cx = classNames.bind(styles);
 function Header() {
   const scrollY = useScrollPosition(SCROLL_FPS);
-  const [currentY, setcurrentY] = useState(window.pageYOffset);
+  const [currentY, setcurrentY] = useState(scrollY);
   const [show, setShow] = useState(true);
   useEffect(() => {
-    setShow(currentY > scrollY);
+    setShow(currentY >= scrollY);
     setcurrentY(scrollY);
   }, [scrollY]);
+
   const cls = show ? "visible" : "hidden";
+  console.log(cls);
   return (
     <div className={cx("wrapper", cls)}>
       <Link to={routesConfig.home}>
