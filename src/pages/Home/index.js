@@ -18,14 +18,20 @@ function Home() {
   const homeData = useSelector((state) => state.homeData);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchHomeData("hello"));
+    const timeInterval = setInterval(() => {
+      dispatch(fetchHomeData());
+    }, 300000);
+    dispatch(fetchHomeData());
+
     dispatch(title("venom"));
+    return clearInterval(timeInterval);
   }, []);
+
   return (
     <>
       {homeData.data ? (
         <div className={cx("wrapper")}>
-          {/* slideshow top whith hot*/}
+          {/* slideshow top with hot*/}
           <BannerSlide data={homeData.data?.hot.jsonData} limit={12} />
           <div className={cx("content")}>
             {/*manga update */}

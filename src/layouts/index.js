@@ -1,1 +1,2 @@
-export { default as HomeLayout } from "./Homelayout";
+export { default as HomeLayout } from "./HomeLayout";
+export { default as MangaDetailLayout } from "./MangaDetailLayout";

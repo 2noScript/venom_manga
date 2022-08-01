@@ -19,7 +19,6 @@ function Header() {
   }, [scrollY]);
 
   const cls = show ? "visible" : "hidden";
-  console.log(cls);
   return (
     <div className={cx("wrapper", cls)}>
       <Link to={routesConfig.home}>

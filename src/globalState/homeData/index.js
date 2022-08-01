@@ -4,6 +4,7 @@ import fetchApi from "~/Fetch";
 export const fetchHomeData = createAsyncThunk(
   "fetchHomeData",
   async (params, thunkAPI) => {
+    // console.log("pad");
     const resHot = await fetchApi.get("hot");
     const resNewMangaUpdate = await fetchApi.get("new-update");
     const resNewManga = await fetchApi.get("filter", {

@@ -13,7 +13,7 @@ function App() {
   // console.log(onlyWidth);
   useEffect(() => {
     document.title = title;
-    console.log(title);
+    // console.log(title);
   }, [title]);
 
   return (

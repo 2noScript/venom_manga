@@ -17,6 +17,7 @@ function Search({ className }) {
   const [value, setValue] = useState("");
   const [debounced, setDebounced] = useDebounce(value, 500);
   const searchData = useSelector((state) => state.searchKey);
+  const [resultShow, setResultShow] = useState(true);
   const dispatch = useDispatch();
   const inputRef = useRef();
   useEffect(() => {
@@ -45,6 +46,9 @@ function Search({ className }) {
   return (
     <Tippy
       placement={"bottom"}
+      onClickOutside={() => {
+        setResultShow(false);
+      }}
       interactive={true}
       render={(attrs) => (
         <div className={cx("results")} tabIndex="-1" {...attrs}>
@@ -59,7 +63,7 @@ function Search({ className }) {
         </div>
       )}
       offset={[0, 8]}
-      visible={value.length > 0}
+      visible={resultShow && value.length > 0}
     >
       <div className={cx("wrapper")}>
         <input
@@ -68,6 +72,9 @@ function Search({ className }) {
           placeholder="tìm manga"
           onChange={(e) => {
             valueChange(e);
+          }}
+          onClick={() => {
+            setResultShow(true);
           }}
           value={value}
           spellCheck={false}
