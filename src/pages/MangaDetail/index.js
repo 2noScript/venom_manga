@@ -16,15 +16,11 @@ function MangaDetail() {
     disPatch(title(mangaDetailData.detail?.name));
   }, [keyManga]);
 
-  // console.log(mangaDetailData.data);
   return (
     <div className={cx("wrapper")}>
       <div>fetchMangaDetailChapList</div>
       <div>{mangaDetailData.detail?.name}</div>
-      <ul>
-        {mangaDetailData.data?.length}
-         
-      </ul>
+      <ul>{mangaDetailData.data?.length}</ul>
     </div>
   );
 }
