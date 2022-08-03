@@ -26,6 +26,7 @@ export const homeData = createSlice({
   initialState: {
     error: false,
     data: null,
+    loading: false,
   },
   reducers: {},
   extraReducers: {
@@ -37,6 +38,7 @@ export const homeData = createSlice({
     },
     [fetchHomeData.fulfilled]: (state, action) => {
       state.data = action.payload;
+      state.loading=false;
     },
   },
 });

@@ -1,0 +1,31 @@
+.wrapper {
+  margin-left: 300px;
+  margin-top: 100px;
+  min-height: 60px;
+  width: 200px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  input[type="text"] {
+    width: 100%;
+    outline: none;
+  }
+}
+.options {
+  ul {
+    width: 200px;
+  }
+  ul li {
+    border: 1px solid black;
+    cursor: pointer;
+    width: 100%;
+    &:hover {
+      background-color: aqua;
+    }
+
+    & + li {
+      margin-top: 4px;
+    }
+  }
+}

@@ -6,7 +6,7 @@ const cx = classNames.bind(styles);
 function MangaGrid({ data, limit }) {
   const [oriData, setOriData] = useState();
   useEffect(() => {
-    limit ? setOriData(data.slice(0, limit)) : setOriData(data);
+    limit ? setOriData(data?.slice(0, limit)) : setOriData(data);
   }, [limit, data]);
   return (
     <div className={cx("wrapper")}>

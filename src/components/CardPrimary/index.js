@@ -5,9 +5,13 @@ import { GiEvilBook, GiAlarmClock } from "react-icons/gi";
 import { BiGlasses } from "react-icons/bi";
 import { MdInfoOutline } from "react-icons/md";
 import { memo } from "react";
+import { Link } from "react-router-dom";
+import { routesConfig } from "~/configs";
+
 const cx = classNames.bind(styles);
-const select = ["đọc ngay", "thông tin"];
+const select = ["theo dõi", "chi tiết"];
 function CardPrimary({ data, className }) {
+  const { name, avatar, update, chapter, keyManga } = data;
   return (
     <div
       className={cx("wrapper", {
@@ -15,16 +19,16 @@ function CardPrimary({ data, className }) {
       })}
     >
       <div className={cx("content")}>
-        <Image className={cx("bg")} src={data.avatar} alt={""} />
-        <div className={cx("name")}>{data.name}</div>
+        <Image className={cx("bg")} src={avatar} alt={""} />
+        <div className={cx("name")}>{name}</div>
         <div className={cx("info")}>
           <div className={cx("chapter")}>
             <GiEvilBook />
-            <span>{data.chapter}</span>
+            <span>{chapter}</span>
           </div>
           <div className={cx("update")}>
             <GiAlarmClock />
-            <span>{data.update}</span>
+            <span>{update}</span>
           </div>
         </div>
       </div>
@@ -34,10 +38,17 @@ function CardPrimary({ data, className }) {
             <BiGlasses />
             <span> {select[0]}</span>
           </div>
-          <div className={cx("more")}>
-            <MdInfoOutline />
-            <span>{select[1]}</span>
-          </div>
+          <Link
+            to={`${routesConfig.mangaDetail.replace(
+              ":keyManga",
+              ""
+            )}${keyManga}`}
+          >
+            <div className={cx("more")}>
+              <MdInfoOutline />
+              <span>{select[1]}</span>
+            </div>
+          </Link>
         </div>
       </div>
     </div>

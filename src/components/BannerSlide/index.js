@@ -11,14 +11,11 @@ import { routesConfig } from "~/configs";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/navigation";
-import { useDispatch } from "react-redux";
-import { setDetail } from "~/globalState/mangaDetailData";
 const cx = classNames.bind(styles);
 function BannerSlide({ data, limit }) {
-  const [oriData, setOriData] = useState();
-  const disPatch = useDispatch();
+  const [oriData, setOriData] = useState(null);
   useEffect(() => {
-    limit ? setOriData(data.slice(0, limit)) : setOriData(data);
+    limit ? setOriData(data?.slice(0, limit)) : setOriData(data);
   }, [limit, data]);
   return (
     <Swiper
@@ -32,19 +29,20 @@ function BannerSlide({ data, limit }) {
       className={cx("wrapper")}
     >
       {oriData?.map((item, index) => {
+        const { chapter, name, description, types, keyManga, avatar } = item;
         return (
           <SwiperSlide className={cx("slide")} key={index}>
             <div
-              style={{ backgroundImage: `url(${item.avatar})` }}
+              style={{ backgroundImage: `url(${avatar})` }}
               className={cx("slide-bg")}
             ></div>
             <div className={cx("slide-content")}>
               <div className={cx("left")}>
-                <div className={cx("chapter")}>chapter {item.chapter}</div>
-                <div className={cx("name")}>{item.name}</div>
-                <div className={cx("description")}>{item.description}</div>
+                <div className={cx("chapter")}>chapter {chapter}</div>
+                <div className={cx("name")}>{name}</div>
+                <div className={cx("description")}>{description}</div>
                 <ul className={cx("tag-list")}>
-                  {item.types.split(",").map((item, index) => {
+                  {types.split(",").map((item, index) => {
                     return (
                       <li key={index} className={cx("tag")}>
                         {item.trim()}
@@ -52,27 +50,30 @@ function BannerSlide({ data, limit }) {
                     );
                   })}
                 </ul>
-                <div className={cx("btn")}>
-                  <Link
-                    to={`${routesConfig.mangaDetail.replace(":keyManga", "")}${
-                      item.keyManga
-                    }`}
-                  >
-                    <div
-                      className={cx("detail")}
-                      onClick={() => {
-                        disPatch(setDetail(item));
-                      }}
+                <div className={cx("btn-route")}>
+                  <div className={cx("detail")}>
+                    <Link
+                      to={`${routesConfig.mangaDetail.replace(
+                        ":keyManga",
+                        ""
+                      )}${keyManga}`}
                     >
                       chi tiết
-                    </div>
-                  </Link>
+                    </Link>
+                  </div>
+                  <div className={cx("follow")}>
+                    <Link
+                      to={`${routesConfig.mangaRead.replace(":keyChap", "")}`}
+                    >
+                      theo dõi
+                    </Link>
+                  </div>
                 </div>
               </div>
               <div className={cx("right")}>
                 <div
                   className={cx("avatar")}
-                  style={{ backgroundImage: `url(${item.avatar})` }}
+                  style={{ backgroundImage: `url(${avatar})` }}
                 ></div>
               </div>
             </div>

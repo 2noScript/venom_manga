@@ -115,3 +115,13 @@
   font-size: 2rem;
   border: none;
 }
+.btn-route {
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  .detail,
+  .follow {
+    margin: 4px 4px;
+    text-transform: capitalize;
+  }
+}

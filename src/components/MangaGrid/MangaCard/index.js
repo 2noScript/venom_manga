@@ -5,7 +5,8 @@ import { memo } from "react";
 import randomColor from "randomcolor";
 import { GiEvilBook, GiAlarmClock } from "react-icons/gi";
 import { BsDot } from "react-icons/bs";
-
+import { Link } from "react-router-dom";
+import { routesConfig } from "~/configs";
 const cx = classNames.bind(styles);
 const STATUS = [
   {
@@ -18,29 +19,34 @@ const STATUS = [
   },
 ];
 function MangaCard({ data }) {
+  const { name, avatar, types, update, chapter, keyManga } = data;
   return (
     <div className={cx("wrapper")}>
-      <div className={cx("content")}>
-        <Image className={cx("avatar")} src={data.avatar} alt={""} />
-        <div className={cx("info")}>
-          <div className={cx("name")} style={{ color: `${randomColor()}` }}>
-            {data.name}
-          </div>
-          <div className={cx("description")}>
-            {/* {data.description !== "" ? data.description : "none"} */}
-          </div>
-          <div className={cx("tags")}>{data.types.split(",")}</div>
+      <Link
+        to={`${routesConfig.mangaDetail.replace(":keyManga", "")}${keyManga}`}
+      >
+        <div className={cx("content")}>
+          <Image className={cx("avatar")} src={avatar} alt={""} />
+          <div className={cx("info")}>
+            <div className={cx("name")} style={{ color: `${randomColor()}` }}>
+              {name}
+            </div>
+            <div className={cx("description")}>
+              {/* {data.description !== "" ? data.description : "none"} */}
+            </div>
+            <div className={cx("tags")}>{types.split(",")}</div>
 
-          <div className={cx("chapter")}>
-            <GiEvilBook className={cx("ico")} />
-            <span>{data.chapter}</span>
-          </div>
-          <div className={cx("time")}>
-            <GiAlarmClock className={cx("ico")} />
-            <span>{data.update}</span>
+            <div className={cx("chapter")}>
+              <GiEvilBook className={cx("ico")} />
+              <span>{chapter}</span>
+            </div>
+            <div className={cx("time")}>
+              <GiAlarmClock className={cx("ico")} />
+              <span>{update}</span>
+            </div>
           </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }

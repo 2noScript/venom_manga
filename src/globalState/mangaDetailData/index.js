@@ -4,8 +4,12 @@ import fetchApi from "~/Fetch";
 export const fetchMangaDetailChapList = createAsyncThunk(
   "fetchMangaDetailChapList",
   async (params, thunkAPI) => {
-    const { data } = await fetchApi.get(`detail?keymanga=${params}`);
-    return data;
+    try {
+      const { data } = await fetchApi.get(`detail?keymanga=${params}`);
+      return data;
+    } catch {
+      return null;
+    }
   }
 );
 
@@ -14,12 +18,11 @@ export const mangaDetailData = createSlice({
   initialState: {
     error: false,
     data: null,
-    detail: null,
     loading: false,
   },
   reducers: {
-    setDetail: (state, action) => {
-      state.detail = action.payload;
+    resetData: (state) => {
+      state.data = null;
     },
   },
   extraReducers: {
@@ -31,9 +34,10 @@ export const mangaDetailData = createSlice({
     },
     [fetchMangaDetailChapList.fulfilled]: (state, action) => {
       state.data = action.payload;
+      state.loading = false;
     },
   },
 });
-export const { setDetail } = mangaDetailData.actions;
+export const { resetData } = mangaDetailData.actions;
 
 export default mangaDetailData.reducer;

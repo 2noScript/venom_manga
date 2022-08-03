@@ -15,8 +15,8 @@ const cx = classNames.bind(styles);
 function Search({ className }) {
   const [cleanHide, setCleanHide] = useState(true);
   const [value, setValue] = useState("");
-  const [debounced, setDebounced] = useDebounce(value, 500);
-  const searchData = useSelector((state) => state.searchKey);
+  const [debounced, setDebounced] = useDebounce(value, 400);
+  const { loading, data } = useSelector((state) => state.searchKey);
   const [resultShow, setResultShow] = useState(true);
   const dispatch = useDispatch();
   const inputRef = useRef();
@@ -52,9 +52,9 @@ function Search({ className }) {
       interactive={true}
       render={(attrs) => (
         <div className={cx("results")} tabIndex="-1" {...attrs}>
-          {searchData.data &&
-            (searchData.data.jsonData.length ? (
-              searchData.data.jsonData.map((item, index) => {
+          {data &&
+            (data.jsonData.length ? (
+              data.jsonData.map((item, index) => {
                 return <Result key={index} data={item} />;
               })
             ) : (
@@ -80,12 +80,12 @@ function Search({ className }) {
           spellCheck={false}
         />
         {/* {results && results.length > 0 && <Bubble data={results.length} />} */}
-        {searchData.loading && (
+        {loading && (
           <div className={cx("loading")}>
             <BiLoaderCircle />
           </div>
         )}
-        {!cleanHide && !searchData.loading && (
+        {!cleanHide && !loading && (
           <div className={cx("clean")} onClick={clean}>
             <MdClear />
           </div>

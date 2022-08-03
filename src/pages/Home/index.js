@@ -12,27 +12,34 @@ import { TITLE, TOP_MANGA, MORE_BUTTON } from "./const";
 import { fetchHomeData } from "~/globalState/homeData";
 import { title } from "~/globalState/appTitle";
 import { useSelector, useDispatch } from "react-redux";
+import { useDebounce } from "@react-hook/debounce";
 const cx = classNames.bind(styles);
 
 function Home() {
-  const homeData = useSelector((state) => state.homeData);
+  const { loading, data } = useSelector((state) => state.homeData);
+  const [loadingDelay, setLoadingDelay] = useDebounce(loading, 100);
   const dispatch = useDispatch();
   useEffect(() => {
     const timeInterval = setInterval(() => {
       dispatch(fetchHomeData());
-    }, 300000);
+    }, 200000);
     dispatch(fetchHomeData());
-
     dispatch(title("venom"));
     return clearInterval(timeInterval);
   }, []);
-
+  useEffect(() => {
+    setLoadingDelay(loading);
+  }, [loading]);
   return (
     <>
-      {homeData.data ? (
-        <div className={cx("wrapper")}>
+      {!loading ? (
+        <div
+          className={cx("wrapper", {
+            "content-loading": loadingDelay,
+          })}
+        >
           {/* slideshow top with hot*/}
-          <BannerSlide data={homeData.data?.hot.jsonData} limit={12} />
+          <BannerSlide data={data?.hot?.jsonData} limit={12} />
           <div className={cx("content")}>
             {/*manga update */}
             <div className={cx("new-update")}>
@@ -42,10 +49,7 @@ function Home() {
                   <RiArrowRightSFill className={cx("title-ico")} />
                 </div>
               </Link>
-              <MangaSlide
-                data={homeData.data?.newMangaUpdate.jsonData}
-                limit={12}
-              />
+              <MangaSlide data={data?.newMangaUpdate?.jsonData} limit={12} />
             </div>
 
             {/* top  */}
@@ -54,10 +58,7 @@ function Home() {
                 return (
                   <div className={cx("topManga-item")} key={index}>
                     <div className={cx("topManga-title")}>{item.title}</div>
-                    <TopManga
-                      data={homeData.data?.newManga.jsonData}
-                      limit={5}
-                    />
+                    <TopManga data={data?.newManga?.jsonData} limit={5} />
                     <div className={cx("topManga-moreBtn")}>
                       <Link to={MORE_BUTTON[index]?.link}>
                         <span>
@@ -78,7 +79,7 @@ function Home() {
                   <RiArrowRightSFill className={cx("title-ico")} />
                 </div>
               </Link>
-              <MangaGrid data={homeData.data?.newManga.jsonData} limit={12} />
+              <MangaGrid data={data?.newManga?.jsonData} limit={12} />
             </div>
           </div>
         </div>
