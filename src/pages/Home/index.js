@@ -5,7 +5,7 @@ import MangaSlide from "cpm/MangaSlide";
 import MangaGrid from "cpm/MangaGrid";
 import { Link } from "react-router-dom";
 import { RiArrowRightSFill } from "react-icons/ri";
-import { memo, useEffect } from "react";
+import { memo, useEffect, useMemo } from "react";
 import Loading from "cpm/Loading";
 import TopManga from "cpm/TopManga";
 import { TITLE, TOP_MANGA, MORE_BUTTON } from "./const";
@@ -27,6 +27,11 @@ function Home() {
     dispatch(title("venom"));
     return clearInterval(timeInterval);
   }, []);
+
+  const { hot, newManga, newMangaUpdate, topWeek, topDay, topMonth } =
+    useMemo(() => {
+      return data;
+    }, [data]);
   useEffect(() => {
     setLoadingDelay(loading);
   }, [loading]);
@@ -39,30 +44,38 @@ function Home() {
           })}
         >
           {/* slideshow top with hot*/}
-          <BannerSlide data={data?.hot?.jsonData} limit={12} />
+          <BannerSlide data={hot?.jsonData} limit={12} />
           <div className={cx("content")}>
             {/*manga update */}
             <div className={cx("new-update")}>
-              <Link to={TITLE[0].link}>
+              <Link to={TITLE.newManga.link}>
                 <div className={cx("title")}>
-                  {TITLE[0].name}
+                  {TITLE.newManga.name}
                   <RiArrowRightSFill className={cx("title-ico")} />
                 </div>
               </Link>
-              <MangaSlide data={data?.newMangaUpdate?.jsonData} limit={12} />
+              <MangaSlide data={newManga?.jsonData} />
             </div>
 
             {/* top  */}
             <div className={cx("topManga-list")}>
               {TOP_MANGA.map((item, index) => {
+                const { title, more, name } = item;
+                let jsonData;
+                if (name === "topWeek") jsonData = topWeek?.jsonData;
+                else if (name === "topDay") jsonData = topDay?.jsonData;
+                else if (name === "topMonth") jsonData = topMonth?.jsonData;
+                else {
+                  jsonData = newManga?.jsonData;
+                }
                 return (
                   <div className={cx("topManga-item")} key={index}>
                     <div className={cx("topManga-title")}>{item.title}</div>
-                    <TopManga data={data?.newManga?.jsonData} limit={5} />
+                    <TopManga data={jsonData} limit={5} />
                     <div className={cx("topManga-moreBtn")}>
-                      <Link to={MORE_BUTTON[index]?.link}>
+                      <Link to={more}>
                         <span>
-                          {MORE_BUTTON[index]?.title}
+                          {"xem thêm"}
                           <RiArrowRightSFill className={cx("ico")} />
                         </span>
                       </Link>
@@ -73,13 +86,13 @@ function Home() {
             </div>
             {/* new manga */}
             <div className={cx("new-manga")}>
-              <Link to={TITLE[1].link}>
+              <Link to={TITLE.newUpdate.link}>
                 <div className={cx("title")}>
-                  {TITLE[1].name}
+                  {TITLE.newUpdate.name}
                   <RiArrowRightSFill className={cx("title-ico")} />
                 </div>
               </Link>
-              <MangaGrid data={data?.newManga?.jsonData} limit={12} />
+              <MangaGrid data={newMangaUpdate?.jsonData} limit={12} />
             </div>
           </div>
         </div>

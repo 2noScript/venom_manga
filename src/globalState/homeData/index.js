@@ -4,20 +4,57 @@ import fetchApi from "~/Fetch";
 export const fetchHomeData = createAsyncThunk(
   "fetchHomeData",
   async (params, thunkAPI) => {
-    // console.log("pad");
-    const resHot = await fetchApi.get("hot");
-    const resNewMangaUpdate = await fetchApi.get("new-update");
-    const resNewManga = await fetchApi.get("filter", {
-      params: {
-        status: 0,
-        sort: 0,
-        genres: 0,
-      },
-    });
-    const hot = resHot.data;
-    const newManga = resNewManga.data;
-    const newMangaUpdate = resNewMangaUpdate.data;
-    return { hot, newManga, newMangaUpdate };
+    try {
+      const resHot = await fetchApi.get("hot");
+      const resNewMangaUpdate = await fetchApi.get("new-update");
+      const resNewManga = await fetchApi.get("filter", {
+        params: {
+          status: 0,
+          sort: 0,
+          genres: 0,
+          page: 0,
+        },
+      });
+      const resTopWeek = await fetchApi.get("filter", {
+        params: {
+          status: 0,
+          sort: 2,
+          genres: 0,
+          page: 0,
+        },
+      });
+      const resTopMonth = await fetchApi.get("filter", {
+        params: {
+          status: 0,
+          sort: 1,
+          genres: 0,
+          page: 0,
+        },
+      });
+      const resDay = await fetchApi.get("filter", {
+        params: {
+          status: 0,
+          sort: 3,
+          genres: 0,
+          page: 0,
+        },
+      });
+      const hot = resHot.data;
+      const newManga = resNewManga.data;
+      const newMangaUpdate = resNewMangaUpdate.data;
+      const topWeek = resTopWeek.data;
+      const topMonth = resTopMonth.data;
+      const topDay = resDay.data;
+      return { hot, newManga, newMangaUpdate, topWeek, topMonth, topDay };
+    } catch {
+      const hot = null;
+      const newManga = null;
+      const newMangaUpdate = null;
+      const topWeek = null;
+      const topMonth = null;
+      const topDay = null;
+      return { hot, newManga, newMangaUpdate, topWeek, topMonth, topDay };
+    }
   }
 );
 
@@ -25,7 +62,14 @@ export const homeData = createSlice({
   name: "homeData",
   initialState: {
     error: false,
-    data: null,
+    data: {
+      hot: null,
+      newManga: null,
+      newMangaUpdate: null,
+      topWeek: null,
+      topMonth: null,
+      topDay: null,
+    },
     loading: false,
   },
   reducers: {},
@@ -38,7 +82,7 @@ export const homeData = createSlice({
     },
     [fetchHomeData.fulfilled]: (state, action) => {
       state.data = action.payload;
-      state.loading=false;
+      state.loading = false;
     },
   },
 });

@@ -1,35 +1,35 @@
-import { title } from "../../globalState/appTitle";
+import { routesConfig } from "~/configs";
 
-const TITLE = [
-  {
+const TITLE = {
+  newUpdate: {
     name: "mới cập nhật",
-    link: "",
+    link: ``,
   },
-  {
+  newManga: {
     name: "truyện mới",
-    link: "",
+    link: `${routesConfig.mangaFilter}?page=0&sort=2&genres=0&status=0`,
   },
-];
+};
 const TOP_MANGA = [
   {
     title: "top one",
-
-    more: "",
+    name: "topOne",
+    more: `${routesConfig.mangaFilter}?page=0&sort=2&genres=0&status=0`,
   },
   {
     title: "top tháng",
-
-    more: "",
+    name: "topMonth",
+    more: `${routesConfig.mangaFilter}?page=0&sort=1&genres=0&status=0`,
   },
   {
     title: "top tuần",
-
-    more: "",
+    name: "topWeek",
+    more: `${routesConfig.mangaFilter}?page=0&sort=2&genres=0&status=0`,
   },
   {
     title: "top ngày",
-
-    more: "",
+    name: "topDay",
+    more: `${routesConfig.mangaFilter}?page=0&sort=3&genres=0&status=0`,
   },
 ];
 const MORE_BUTTON = [
